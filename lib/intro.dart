@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:asdosku/loginscreen.dart';
 import 'package:flutter/material.dart';
 import 'package:introduction_screen/introduction_screen.dart';
 import 'package:flutter/cupertino.dart';
@@ -58,34 +59,39 @@ class Intro extends State<Introduction> {
                   borderRadius: new BorderRadius.circular(30.0)))
         ],
       ),
-
-      image: Center(child: new Image.asset('assets/images/biglogo.png', fit: BoxFit.contain, width: 300.0, height: 300.0)),
+      image: Center(
+          child: new Image.asset('assets/images/biglogo.png',
+              fit: BoxFit.contain, width: 300.0, height: 300.0)),
     ),
   ];
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
         //backgroundColor: Colors.white,
-        home: Scaffold( body: IntroductionScreen(
-          pages: introList,
-          onDone: () {
-            // When done button is press
-          },
-          onSkip: () {
-            // You can also override onSkip callback
-          },
-          showSkipButton: true,
-          skip: const Icon(Icons.skip_next),
-          next: const Icon(Icons.navigate_next),
-          done: const Text("Lanjut",
-              style: TextStyle(fontWeight: FontWeight.w600)),
-          dotsDecorator: DotsDecorator(
-              size: const Size.square(10.0),
-              activeSize: const Size(20.0, 10.0),
-              color: Colors.black26,
-              spacing: const EdgeInsets.symmetric(horizontal: 3.0),
-              activeShape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(25.0))),
-        )));
+        home: Scaffold(
+            body: IntroductionScreen(
+      pages: introList,
+      onDone: () {
+        // When done button is press
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => LoginScreen()),
+        );
+      },
+      onSkip: () {
+        // You can also override onSkip callback
+      },
+      showSkipButton: true,
+      skip: const Icon(Icons.skip_next),
+      next: const Icon(Icons.navigate_next),
+      done: const Text("Lanjut", style: TextStyle(fontWeight: FontWeight.w600)),
+      dotsDecorator: DotsDecorator(
+          size: const Size.square(10.0),
+          activeSize: const Size(20.0, 10.0),
+          color: Colors.black26,
+          spacing: const EdgeInsets.symmetric(horizontal: 3.0),
+          activeShape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(25.0))),
+    )));
   }
 }

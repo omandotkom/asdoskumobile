@@ -1,34 +1,35 @@
 import 'package:flutter/material.dart';
 import 'dart:async';
 import 'intro.dart';
-class SplashScreen extends StatefulWidget{
+import 'package:logger/logger.dart';
 
+class SplashScreen extends StatefulWidget {
   _SplashScreen createState() => _SplashScreen();
-
 }
 
-class _SplashScreen extends State<SplashScreen>{
-
-  void initState(){
+class _SplashScreen extends State<SplashScreen> {
+  void initState() {
     super.initState();
     splashscreenStart();
   }
 
-  splashscreenStart() async{
+  splashscreenStart() async {
     var duration = const Duration(seconds: 3);
-    return Timer(duration, (){
-     
+    return Timer(duration, () {
+      var logger = Logger(
+        printer: PrettyPrinter(),
+      );
+
+      logger.d("HELLO");
       Navigator.push(
         context,
         MaterialPageRoute(builder: (context) => new Introduction()),
-
       );
     });
   }
 
-  @override 
-  Widget build(BuildContext context){
-
+  @override
+  Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.blue,
       body: Center(
@@ -36,19 +37,20 @@ class _SplashScreen extends State<SplashScreen>{
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
-            
-            new Image.asset('assets/images/1.png', fit: BoxFit.contain,),
-
-            SizedBox(height: 12.0,),
-
-            Text("No.1 di Indonesia untuk Dosen Tercinta",
-              style: TextStyle(color: Colors.white, fontSize : 12.0, fontFamily: "sans")
+            new Image.asset(
+              'assets/images/1.png',
+              fit: BoxFit.contain,
+              width: 100.0,
             ),
-            
+            SizedBox(
+              height: 12.0,
+            ),
+            Text("No.1 di Indonesia untuk Dosen Tercinta",
+                style: TextStyle(
+                    color: Colors.white, fontSize: 12.0, fontFamily: "sans")),
           ],
         ),
       ),
     );
   }
-
 }
